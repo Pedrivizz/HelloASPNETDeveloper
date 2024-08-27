@@ -1,3 +1,4 @@
+using HelloASPNETDeveloper.Generic.Domain.Model.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HelloASPNETDeveloper.Generic.Interfaces.REST.Controllers;
@@ -7,8 +8,14 @@ namespace HelloASPNETDeveloper.Generic.Interfaces.REST.Controllers;
 public class WelcomeController : ControllerBase
 {
     [HttpGet]
-    public string welcome()
+    public string Welcome()
     {
-        return "Welcome!";
+        return WelcomeBuilder.Build(null);
+    }
+
+    [HttpGet("{name}")]
+    public string Welcome(string name)
+    {
+        return WelcomeBuilder.Build(name);
     }
 }
